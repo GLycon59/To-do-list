@@ -95,7 +95,7 @@ while(numar<nr)
       numar++;}
         set_color(W);
       system("CLS");
-      if(alegere==0)Meniu();
+      if(alegere==0)selectare_afisare_scriere_fisier(nume,alg);
       else afisare(arr,nume);
     }
 delete(nume,alg);
