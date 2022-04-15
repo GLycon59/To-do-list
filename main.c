@@ -30,7 +30,9 @@ printf("<==="); set_color(Bl);
 for(int j=0;j<strlen(nume)-4;j++)
     printf("%c",nume[j]);
 set_color(Cy);printf("===>\n");
-set_color(W);
+    set_color(Gr);printf("0)");
+    set_color(Rd);printf("Back to Meniu\n");
+    set_color(W);
     for(int i=0;i<nr;i++)
         {
             char sir[255];
@@ -84,7 +86,7 @@ void selectare_opt_fisier(int *arr,int nr,char nume[],int alg)//This help to sel
 int numar=0;
 while(numar<nr)
     {
-      printf("Selecteaza:");
+      printf("Choose:");
       int alegere=-1;
       do{set_color(Gr);
          scanf("%d",&alegere);
@@ -93,7 +95,8 @@ while(numar<nr)
       numar++;}
         set_color(W);
       system("CLS");
-      afisare(arr,nume);
+      if(alegere==0)Meniu();
+      else afisare(arr,nume);
     }
 delete(nume,alg);
 system("PAUSE");
@@ -118,9 +121,9 @@ selectare_opt_fisier(arr,nr,nume,alg);
 void creare_fisier()//Create a file; !! It must not contain spaces; or change the scanf to a gets()
 {char nume[50];
 set_color(Rd);
-printf("Fisierul nu trebuie sa contina /?\.\n");
+printf("The file shouldn't contain /?\. and must be written without any space\n");
 set_color(W);
-printf("Nume fisier:");
+printf("File name:");
 set_color(Cy);
 scanf("%s",nume);
 set_color(W);
@@ -144,14 +147,14 @@ set_color(Rd);
 printf("<==="); set_color(Bl);printf("MENIU");set_color(Rd);printf("===>\n");
 set_color(W);
 set_color(Gr);printf("1)");
-set_color(Cy);printf("Vezi Fisiere\n");
+set_color(Cy);printf("Show all files\n");
 set_color(Gr);printf("2)");
-set_color(Cy);printf("Creeaza fisier\n");
+set_color(Cy);printf("Create a file\n");
 set_color(Gr);printf("3)");
 set_color(Rd);printf("Stop\n");
 set_color(W);
 do{set_color(W);
-    printf("Alege: ");
+    printf("Choose: ");
     set_color(Gr);scanf("%d",&alg);
 }while((alg<=0)||(alg>3));
 set_color(W);
@@ -179,7 +182,7 @@ fprintf(FP,nr);
 fclose(FP);
 
 char nume_task[30];
-printf("Scrie un task:");
+printf("Write a task:");
 //gets(nume_task);
 set_color(Cy);
 scanf("%s",nume_task);
@@ -195,15 +198,15 @@ selectare_afisare_scriere_fisier(nume,alg);
 ///****************************************************///
 void selectare_afisare_scriere_fisier(char nume[],int alg)//Show all the options you have when you open select a Task File
 {set_color(Gr);printf("1)");
-set_color(W);printf("Adauga task\n");
+set_color(W);printf("Add task\n");
  set_color(Gr);printf("2)");
- set_color(W);printf("Afiseaza taskuri\n");
+ set_color(W);printf("Show all task\n");
 set_color(Gr);printf("3)");
 set_color(Rd);printf("Back\n");
 set_color(W);printf("______________\n");
  int alegere=0;
  do{set_color(W);
-    printf("Selecteaza:");
+    printf("Select:");
     set_color(Gr);
     scanf("%d",&alegere);
  }while((alegere<=0)||(alegere>3));
@@ -226,7 +229,7 @@ void afisare_fisiere(void)//show all the to do files you have
     fclose(fp);
     int alg=-1;
     set_color(Rd);
-    printf("<==="); set_color(Bl);printf("Fisiere");set_color(Rd);printf("===>\n");
+    printf("<==="); set_color(Bl);printf("Files");set_color(Rd);printf("===>\n");
     set_color(Gr);printf("0)");
     set_color(W);printf("Back\n");
     for(int i=1;i<=k;i++)
@@ -236,7 +239,7 @@ void afisare_fisiere(void)//show all the to do files you have
        }
     printf("_____________\n");
     do{
-        printf("Alege fisier:");
+        printf("Choose:");
         set_color(Gr);
         scanf("%d",&alg);
         set_color(W);
