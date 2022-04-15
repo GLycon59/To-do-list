@@ -11,14 +11,15 @@
 #define W 15
 #define Cy 11
 
-void set_color(int color_code) {
+void set_color(int color_code)//Change the color of the text
+{
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color_code);
 }
 
 
 
-void afisare(int *arr,char nume[])
+void afisare(int *arr,char nume[])//Show all the task from the file, and put X if they're done
 {FILE *fPointer;
     fPointer=fopen(nume,"r");
     char nr_task[10];
@@ -54,7 +55,7 @@ set_color(W);
  fclose(fPointer);
 }
 ///****************************************************///
-void delete(char nume[],int alg)
+void delete(char nume[],int alg)//Delete a To do task file
 {FILE *FP=fopen("Fisiere.txt","r");
 char temporar[]="temporar.txt",str[50];
 FILE *temp=fopen(temporar,"w+");
@@ -78,7 +79,7 @@ rename(temporar,"Fisiere.txt");
 }
 
 ///****************************************************///
-void selectare_opt_fisier(int *arr,int nr,char nume[],int alg)
+void selectare_opt_fisier(int *arr,int nr,char nume[],int alg)//This help to select what task you want to pin as done
 {afisare(arr,nume);
 int numar=0;
 while(numar<nr)
@@ -102,7 +103,7 @@ Meniu();
 }
 ///****************************************************///
 
-void fisier(char nume[],int alg)
+void fisier(char nume[],int alg)//Create an array for the To do file you just opened
 {FILE *fPointer;
 fPointer=fopen(nume,"r");
 char nr_task[10];
@@ -114,7 +115,7 @@ arr=(int *)calloc(nr,sizeof(int));
 selectare_opt_fisier(arr,nr,nume,alg);
 }
 ///****************************************************///
-void creare_fisier()
+void creare_fisier()//Create a file; !! It must not contain spaces; or change the scanf to a gets()
 {char nume[50];
 set_color(Rd);
 printf("Fisierul nu trebuie sa contina /?\.\n");
@@ -160,7 +161,7 @@ else exit(1);
 }
 ///****************************************************///
 
-void adaugare(char nume[],int alg)
+void adaugare(char nume[],int alg)//Add a task to the file
 {
 FILE *FP;
 FP=fopen(nume,"r+");
@@ -192,7 +193,7 @@ selectare_afisare_scriere_fisier(nume,alg);
 }
 
 ///****************************************************///
-void selectare_afisare_scriere_fisier(char nume[],int alg)
+void selectare_afisare_scriere_fisier(char nume[],int alg)//Show all the options you have when you open select a Task File
 {set_color(Gr);printf("1)");
 set_color(W);printf("Adauga task\n");
  set_color(Gr);printf("2)");
@@ -212,7 +213,7 @@ else if(alegere==3){system("CLS");afisare_fisiere();}
 else {system("CLS");adaugare(nume,alg);}
 }
 ///****************************************************///
-void afisare_fisiere(void)
+void afisare_fisiere(void)//show all the to do files you have
 {
     char nume[200][50];
     FILE *fp;
@@ -245,7 +246,7 @@ void afisare_fisiere(void)
 
 }
 ///****************************************************///
-void director(void)
+void director(void)//Create a file that contain all the task files from the directory
 {
      DIR *d;
      FILE *FP;
