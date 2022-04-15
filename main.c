@@ -118,16 +118,20 @@ arr=(int *)calloc(nr,sizeof(int));
 selectare_opt_fisier(arr,nr,nume,alg);
 }
 ///****************************************************///
-void creare_fisier()//Create a file; !! It must not contain spaces; or change the scanf to a gets()
+void creare_fisier()//Create a file;
 {char nume[50];
 set_color(Rd);
-printf("The file shouldn't contain /?\. and must be written without any space\n");
+printf("The file shouldn't contain /?\.\n");
 set_color(W);
 printf("File name:");
 set_color(Cy);
-scanf("%s",nume);
+
+fgets(nume,50,stdin);
+fgets(nume,50,stdin);
+nume[strcspn(nume, "\n")] = 0;
 set_color(W);
 strcat(nume,".txt");
+system("PAUSE");
 FILE *FP=fopen(nume,"w+");
 fputs("000\n",FP);
 fclose(FP);
@@ -180,12 +184,13 @@ else sprintf(nr,"%d",numar);
 FP=fopen(nume,"r+");
 fprintf(FP,nr);
 fclose(FP);
-
 char nume_task[30];
 printf("Write a task:");
-//gets(nume_task);
+fgets(nume_task,30,stdin);
+fgets(nume_task,30,stdin);
 set_color(Cy);
-scanf("%s",nume_task);
+nume_task[strcspn(nume_task, "\n")] = 0;
+//scanf("%s",nume_task);
 set_color(W);
 FP=fopen(nume,"a");
 fputs(nume_task,FP);
